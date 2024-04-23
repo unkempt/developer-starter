@@ -31,9 +31,9 @@
   // src/index.ts
   window.Webflow ||= [];
   window.Webflow.push(() => {
-    const name = "John Doe 8";
+    const name = "John Doe 9";
     greetUser(name);
-    document.body.style.backgroundColor = "red";
+    document.body.style.backgroundColor = "yellow";
   });
 })();
 //# sourceMappingURL=index.js.map
