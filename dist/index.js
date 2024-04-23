@@ -33,7 +33,7 @@
   window.Webflow.push(() => {
     const name = "John Doe 8";
     greetUser(name);
-    document.body.style.backgroundColor = "yellow";
+    document.body.style.backgroundColor = "red";
   });
 })();
 //# sourceMappingURL=index.js.map
