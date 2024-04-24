@@ -13,7 +13,7 @@ window.Webflow.push(async () => {
   //const app = new Application();
   const app = new PIXI.Application();
   await app.init({ width: window.innerWidth, height: window.innerHeight });
-
+  const holder = document.querySelector('#hooder');
   //   const app = new PIXI.Application({
   //     view: captureCanvas,
   //     width: ww,
@@ -38,7 +38,8 @@ window.Webflow.push(async () => {
     useCORS: true,
   }).then(function (canvas) {
     console.log('THEN');
-    document.body.appendChild(canvas);
+    //document.body.appendChild(canvas);
+    holder.appendChild(canvas);
 
     // const image = new Image();
     // image.src = canvas.toDataURL('image/png');
