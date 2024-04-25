@@ -8,12 +8,14 @@ window.Webflow ||= [];
 window.Webflow.push(async () => {
   const name = 'John Doe 10';
   greetUser(name);
-  document.body.style.backgroundColor = 'blue';
+  //document.body.style.backgroundColor = 'blue';
 
   //const app = new Application();
   const app = new PIXI.Application();
   await app.init({ width: window.innerWidth, height: window.innerHeight });
-  const holder = document.querySelector('#hooder');
+
+  const holder = document.getElementById('holder');
+  //const holder = document.querySelector('#holder');
   //   const app = new PIXI.Application({
   //     view: captureCanvas,
   //     width: ww,
@@ -29,10 +31,10 @@ window.Webflow.push(async () => {
   //
   //
   html2canvas(document.body, {
-    //x: window.scrollX,
-    //y: window.scrollY,
-    width: window.innerWidth,
-    height: window.innerHeight,
+    x: 0, //window.scrollX,
+    y: 0, //,
+    width: window.innerWidth / 2,
+    height: window.innerHeight / 2,
     scale: window.devicePixelRatio,
     //preserveDrawingBuffer: true,
     useCORS: true,

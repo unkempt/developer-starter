@@ -43096,20 +43096,22 @@ ${parts.join("\n")}
   window.Webflow.push(async () => {
     const name = "John Doe 10";
     greetUser(name);
-    document.body.style.backgroundColor = "blue";
     const app = new Application();
     await app.init({ width: window.innerWidth, height: window.innerHeight });
+    const holder = document.getElementById("holder");
     (0, import_html2canvas.default)(document.body, {
-      //x: window.scrollX,
-      //y: window.scrollY,
-      width: window.innerWidth,
-      height: window.innerHeight,
+      x: 0,
+      //window.scrollX,
+      y: 0,
+      //,
+      width: window.innerWidth / 2,
+      height: window.innerHeight / 2,
       scale: window.devicePixelRatio,
       //preserveDrawingBuffer: true,
       useCORS: true
     }).then(function(canvas) {
       console.log("THEN");
-      document.body.appendChild(canvas);
+      holder.appendChild(canvas);
       console.log("complete");
     });
     function renderWithPixi(imageData) {
