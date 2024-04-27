@@ -1,82 +1,85 @@
-import html2canvas from 'html2canvas';
-import * as PIXI from 'pixi.js';
+//import Swiper and modules styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-//import { Application, Assets, Sprite } from 'pixi.js';
+//console.log()
+//
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
+import Swiper from 'swiper';
+import { Keyboard, Mousewheel, Pagination } from 'swiper/modules';
+//import SwiperCore, { Keyboard, Mousewheel } from "swiper/core";
+// SwiperCore.use([Keyboard, Mousewheel]);
+import WheelIndicator from 'wheel-indicator';
+
+//import { Navigation, Pagination } from 'swiper/modules';
 import { greetUser } from '$utils/greet';
 
+document.addEventListener(
+  'DOMContentLoaded',
+  function () {
+    const name = 'John Doe 334';
+    greetUser(name);
+    //document.body.style.backgroundColor = 'yellow';
+    console.log('This is a test');
+    const swiper = new Swiper('.swiper', {
+      modules: [Keyboard, Mousewheel, Pagination],
+      //css: [Pagination],
+      direction: 'vertical', //'horizontal', //'vertical',
+      slidesPerView: 1,
+      speed: 500,
+      keyboard: {
+        enabled: true,
+        onlyInViewport: false,
+      },
+      //spaceBetween: 30,
+      //keyboard: true,
+      mousewheel: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      //loop: true,
+      //loopedSlides: 3, // according to the codepen
+      //injectStyles: {width}
+      // width: 100%,
+      // height: 100vh,
+    });
+
+    const indicator = new WheelIndicator({
+      //elem: document.querySelector('.swiper'),
+      // callback: function (e) {
+      //   if (e.direction == 'up') swiper.slidePrev();
+      //   else swiper.slideNext();
+      // },
+    });
+
+    console.log(swiper);
+  },
+  false
+);
+
 window.Webflow ||= [];
-window.Webflow.push(async () => {
-  const name = 'John Doe 10';
+window.Webflow.push(() => {
+  const name = 'John Doe 1';
   greetUser(name);
-  //document.body.style.backgroundColor = 'blue';
+  //document.body.style.backgroundColor = 'yellow';
 
-  //const app = new Application();
-  const app = new PIXI.Application();
-  await app.init({ width: window.innerWidth, height: window.innerHeight });
+  // document.addEventListener('DOMContentLoaded', function () {
+  //   const swiper = new Swiper('.swiper', {
+  //     modules: [Navigation, Pagination],
+  //     direction: 'horizontal',
+  //     mousewheel: true,
+  //     keyboard: true,
+  //     loop: true,
+  //   });
 
-  const holder = document.getElementById('holder');
-  //const holder = document.querySelector('#holder');
-  //   const app = new PIXI.Application({
-  //     view: captureCanvas,
-  //     width: ww,
-  //     height: wh,
-  //     transparent: true
+  //   console.log(swiper);
   // });
-  // Wait for the Renderer to be available
-  //await app.init();
+  console.log('j');
 
-  // The application will create a canvas element for you that you
-  // can then insert into the DOM
-
-  //
-  //
-  html2canvas(document.body, {
-    x: 0, //window.scrollX,
-    y: 0, //,
-    width: window.innerWidth / 2,
-    height: window.innerHeight / 2,
-    scale: window.devicePixelRatio,
-    //preserveDrawingBuffer: true,
-    useCORS: true,
-  }).then(function (canvas) {
-    console.log('THEN');
-    //document.body.appendChild(canvas);
-    holder.appendChild(canvas);
-
-    // const image = new Image();
-    // image.src = canvas.toDataURL('image/png');
-    // //const myBaseTexture = new PIXI.tex  .BaseTexture(image);
-    // const texture = PIXI.textureFrom(image.src);
-
-    // // then add to the cache (if required)
-    // PIXI.Texture.addTextureToCache(texture, "someId");
-
-    // // to retrieve the texture it would be a case of
-    // var coolTexture = PIXI.Sprite.fromImage("someId");
-
-    //const texture = PIXI.Texture.from(canvas.toDataURL('image/png'));
-    // then add to the cache (if required)
-    //PIXI.Texture.addTextureToCache(texture, "someId");
-
-    // // to retrieve the texture it would be a case of
-    // var coolTexture = PIXI.Sprite.fromImage("someId");
-
-    // const sprite = new PIXI.Sprite(texture);
-    // sprite.width = window.innerWidth; // Set canvas width
-    // sprite.height = window.innerHeight; // Set canvas height
-    // app.stage.addChild(sprite);
-    // console.log('yap');
-    // //renderWithPixi(canvas.toDataURL('image/png'));
-
-    console.log('complete');
-  });
-
-  function renderWithPixi(imageData) {
-    const texture = PIXI.Texture.from(imageData);
-    const sprite = new PIXI.Sprite(texture);
-    sprite.width = window.innerWidth; // Set canvas width
-    sprite.height = window.innerHeight; // Set canvas height
-    app.stage.addChild(sprite);
-    console.log('yap');
-  }
+  //const swiper = document.getElementById('holder');
+  //const mySwiper = document.getElementsByClassName('swiper');
 });
